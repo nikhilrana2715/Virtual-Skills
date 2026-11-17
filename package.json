@@ -1,0 +1,13 @@
+{
+  "name": "virtual-skills",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": ["backend", "frontend"],
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,green \"npm:dev -w backend\" \"npm:dev -w frontend\"",
+    "seed": "npm run seed -w backend",
+    "test": "npm test -w backend",
+    "build": "npm run typecheck -w backend && npm run build -w frontend"
+  },
+  "devDependencies": { "concurrently": "^9.1.0" }
+}
