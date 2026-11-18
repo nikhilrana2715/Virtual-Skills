@@ -1,0 +1,703 @@
+{
+  "_note": "Resource topics. Add a topic = add one object here + its slug in backend/src/modules/sitemap.ts TOPIC_SLUGS (a test checks they match). relatedCategories = catalog category slugs; relatedAppCategories = ids from apps.json. Run `npm run verify-links -w frontend` after editing URLs.",
+  "topics": [
+    {
+      "slug": "ai-ml",
+      "title": "AI & ML",
+      "icon": "brain",
+      "desc": "Machine learning, deep learning and model building",
+      "intro": "Learn how machines learn from data: start with Python and statistics, move to classic ML with scikit-learn, then neural networks, transformers and putting models into production.",
+      "roadmap": {
+        "beginner": [
+          "Python, NumPy and pandas basics",
+          "Linear algebra, probability and statistics essentials",
+          "Supervised learning with scikit-learn (regression, classification)"
+        ],
+        "intermediate": [
+          "Model evaluation, cross-validation and feature engineering",
+          "Neural networks with PyTorch",
+          "Computer vision and NLP fundamentals"
+        ],
+        "advanced": [
+          "Transformers and fine-tuning pretrained models",
+          "MLOps: experiment tracking, deployment and monitoring",
+          "Reading and reproducing research papers"
+        ]
+      },
+      "courses": [
+        {
+          "name": "Machine Learning Crash Course (Google)",
+          "url": "https://developers.google.com/machine-learning/crash-course",
+          "pricing": "Free",
+          "verified": true
+        },
+        {
+          "name": "Practical Deep Learning for Coders (fast.ai)",
+          "url": "https://course.fast.ai/",
+          "pricing": "Free",
+          "verified": true
+        },
+        {
+          "name": "Hugging Face LLM Course",
+          "url": "https://huggingface.co/learn/llm-course",
+          "pricing": "Free",
+          "verified": true
+        },
+        {
+          "name": "Machine Learning Specialization (DeepLearning.AI, Coursera)",
+          "url": "https://www.coursera.org/specializations/machine-learning-introduction",
+          "pricing": "Paid",
+          "verified": true
+        }
+      ],
+      "cheatSheets": [
+        {
+          "name": "scikit-learn: choosing the right estimator",
+          "url": "https://scikit-learn.org/stable/machine_learning_map.html",
+          "verified": true
+        },
+        {
+          "name": "Stanford CS 229 machine learning cheatsheets",
+          "url": "https://stanford.edu/~shervine/teaching/cs-229/",
+          "verified": true
+        }
+      ],
+      "relatedCategories": [
+        "ai-machine-learning",
+        "generative-ai",
+        "models-datasets",
+        "research-papers"
+      ],
+      "relatedAppCategories": [
+        "ai-chat",
+        "ai-media",
+        "learning"
+      ]
+    },
+    {
+      "slug": "it-services",
+      "title": "IT Services",
+      "icon": "server",
+      "desc": "IT support, service desks, monitoring and networking",
+      "intro": "Everything an IT support or operations person uses day to day: troubleshooting, networking, helpdesk workflows, monitoring, configuration management and keeping systems secure.",
+      "roadmap": {
+        "beginner": [
+          "Hardware, operating systems and troubleshooting basics",
+          "Networking fundamentals: IP, DNS, DHCP, TCP/UDP",
+          "Helpdesk workflow: tickets, SLAs and documentation"
+        ],
+        "intermediate": [
+          "Linux administration and shell scripting",
+          "Identity and access: Active Directory / Entra ID, SSO",
+          "Monitoring and alerting (Prometheus, Grafana, uptime checks)"
+        ],
+        "advanced": [
+          "IT service management and change control (ITIL-style)",
+          "Configuration management with Ansible",
+          "Hardening, backups and disaster recovery"
+        ]
+      },
+      "courses": [
+        {
+          "name": "Google IT Support Professional Certificate (Coursera)",
+          "url": "https://www.coursera.org/professional-certificates/google-it-support",
+          "pricing": "Paid",
+          "verified": true
+        },
+        {
+          "name": "Professor Messer CompTIA training videos",
+          "url": "https://www.professormesser.com/",
+          "pricing": "Free",
+          "verified": true
+        },
+        {
+          "name": "Microsoft Learn training",
+          "url": "https://learn.microsoft.com/en-us/training/",
+          "pricing": "Free",
+          "verified": true
+        },
+        {
+          "name": "Linux Journey",
+          "url": "https://linuxjourney.com/",
+          "pricing": "Free",
+          "verified": true
+        }
+      ],
+      "cheatSheets": [
+        {
+          "name": "The Linux Command Line (free book)",
+          "url": "https://linuxcommand.org/tlcl.php",
+          "verified": true
+        },
+        {
+          "name": "explainshell: explain any shell command",
+          "url": "https://explainshell.com/",
+          "verified": true
+        }
+      ],
+      "relatedCategories": [
+        "it-service-management",
+        "it-operations",
+        "networking",
+        "cybersecurity-defense"
+      ],
+      "relatedAppCategories": [
+        "productivity",
+        "cloud",
+        "learning"
+      ]
+    },
+    {
+      "slug": "cloud-storage",
+      "title": "Cloud Storage",
+      "icon": "cloud",
+      "desc": "Object storage, backups, access control and cost",
+      "intro": "Understand how data is stored in the cloud: object, block and file storage, permissions, encryption, backups and how to keep storage costs under control.",
+      "roadmap": {
+        "beginner": [
+          "Cloud models (IaaS, PaaS, SaaS), regions and availability zones",
+          "Storage types: object, block and file",
+          "Create an account on one provider's free tier"
+        ],
+        "intermediate": [
+          "Object storage (S3 / Azure Blob / Google Cloud Storage): buckets, versioning, lifecycle rules",
+          "Access control: IAM policies, signed URLs, encryption",
+          "Backups and sync: snapshots, rclone, retention policies"
+        ],
+        "advanced": [
+          "Storage as code with Terraform / OpenTofu",
+          "Cost optimization: storage classes and egress",
+          "Cross-region replication and disaster recovery"
+        ]
+      },
+      "courses": [
+        {
+          "name": "AWS Skill Builder",
+          "url": "https://skillbuilder.aws/",
+          "pricing": "Freemium",
+          "verified": true
+        },
+        {
+          "name": "Microsoft Azure Fundamentals (AZ-900) learning path",
+          "url": "https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/",
+          "pricing": "Free",
+          "verified": true
+        },
+        {
+          "name": "Google Cloud Skills Boost",
+          "url": "https://www.cloudskillsboost.google/",
+          "pricing": "Freemium",
+          "verified": true
+        }
+      ],
+      "cheatSheets": [
+        {
+          "name": "Amazon S3 user guide",
+          "url": "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+          "verified": true
+        },
+        {
+          "name": "rclone documentation",
+          "url": "https://rclone.org/docs/",
+          "verified": true
+        }
+      ],
+      "relatedCategories": [
+        "cloud-infrastructure",
+        "databases-storage"
+      ],
+      "relatedAppCategories": [
+        "cloud",
+        "productivity"
+      ]
+    },
+    {
+      "slug": "coding-languages",
+      "title": "Coding Languages",
+      "icon": "code",
+      "desc": "Python, JavaScript, TypeScript, Go, Java and more",
+      "intro": "Pick a first language, learn the fundamentals properly, then add a typed language and the habits that make code reliable: testing, debugging and version control.",
+      "roadmap": {
+        "beginner": [
+          "Pick one first language (Python or JavaScript)",
+          "Variables, control flow, functions and data structures",
+          "Git and GitHub basics"
+        ],
+        "intermediate": [
+          "Object-oriented and functional patterns",
+          "Testing and debugging",
+          "A second, typed language (TypeScript, Java or Go)"
+        ],
+        "advanced": [
+          "Algorithms and data structures",
+          "Concurrency and performance",
+          "Contributing to open-source projects"
+        ]
+      },
+      "courses": [
+        {
+          "name": "CS50x: Introduction to Computer Science (Harvard)",
+          "url": "https://cs50.harvard.edu/x/",
+          "pricing": "Free",
+          "verified": true
+        },
+        {
+          "name": "freeCodeCamp",
+          "url": "https://www.freecodecamp.org/",
+          "pricing": "Free",
+          "verified": true
+        },
+        {
+          "name": "Exercism",
+          "url": "https://exercism.org/",
+          "pricing": "Free",
+          "verified": true
+        },
+        {
+          "name": "The Python Tutorial (official)",
+          "url": "https://docs.python.org/3/tutorial/",
+          "pricing": "Free",
+          "verified": true
+        }
+      ],
+      "cheatSheets": [
+        {
+          "name": "Learn X in Y minutes",
+          "url": "https://learnxinyminutes.com/",
+          "verified": true
+        },
+        {
+          "name": "MDN JavaScript reference",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference",
+          "verified": true
+        },
+        {
+          "name": "TypeScript handbook",
+          "url": "https://www.typescriptlang.org/docs/handbook/intro.html",
+          "verified": true
+        }
+      ],
+      "relatedCategories": [
+        "developer-tools",
+        "web-development"
+      ],
+      "relatedAppCategories": [
+        "coding",
+        "learning"
+      ]
+    },
+    {
+      "slug": "data-science",
+      "title": "Data Science",
+      "icon": "flask",
+      "desc": "Statistics, Python notebooks and ML for data",
+      "intro": "Turn raw data into answers: clean and explore data in notebooks, test hypotheses with statistics, and build predictive models you can explain.",
+      "roadmap": {
+        "beginner": [
+          "Python, pandas and Jupyter notebooks",
+          "Descriptive statistics and probability",
+          "Data cleaning and exploratory analysis"
+        ],
+        "intermediate": [
+          "Visualization (matplotlib, seaborn, Plotly)",
+          "Hypothesis testing and A/B tests",
+          "Machine learning with scikit-learn"
+        ],
+        "advanced": [
+          "Feature engineering and model interpretation",
+          "Larger data: Spark, DuckDB",
+          "Experiment tracking and deployment with MLflow"
+        ]
+      },
+      "courses": [
+        {
+          "name": "Kaggle Learn",
+          "url": "https://www.kaggle.com/learn",
+          "pricing": "Free",
+          "verified": true
+        },
+        {
+          "name": "Python Data Science Handbook (free online book)",
+          "url": "https://jakevdp.github.io/PythonDataScienceHandbook/",
+          "pricing": "Free",
+          "verified": true
+        },
+        {
+          "name": "IBM Data Science Professional Certificate (Coursera)",
+          "url": "https://www.coursera.org/professional-certificates/ibm-data-science",
+          "pricing": "Paid",
+          "verified": true
+        }
+      ],
+      "cheatSheets": [
+        {
+          "name": "pandas cheat sheet (PDF)",
+          "url": "https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf",
+          "verified": true
+        },
+        {
+          "name": "Matplotlib cheatsheets",
+          "url": "https://matplotlib.org/cheatsheets/",
+          "verified": true
+        }
+      ],
+      "relatedCategories": [
+        "data-science-analytics",
+        "models-datasets",
+        "ai-machine-learning"
+      ],
+      "relatedAppCategories": [
+        "data",
+        "learning"
+      ]
+    },
+    {
+      "slug": "data-analyst",
+      "title": "Data Analyst",
+      "icon": "chart",
+      "desc": "Excel, SQL, BI dashboards and data storytelling",
+      "intro": "The practical analyst toolkit: spreadsheets, SQL, BI dashboards and clear reports that help people make decisions.",
+      "roadmap": {
+        "beginner": [
+          "Spreadsheets: formulas, pivot tables, charts",
+          "SQL basics: SELECT, JOIN, GROUP BY",
+          "Data cleaning and data types"
+        ],
+        "intermediate": [
+          "BI tools: Power BI, Tableau or Looker Studio",
+          "Dashboard design and KPIs",
+          "Python or R for analysis"
+        ],
+        "advanced": [
+          "Advanced SQL: window functions and CTEs",
+          "Data modeling (star schema) and DAX",
+          "Storytelling and stakeholder reporting"
+        ]
+      },
+      "courses": [
+        {
+          "name": "Google Data Analytics Professional Certificate (Coursera)",
+          "url": "https://www.coursera.org/professional-certificates/google-data-analytics",
+          "pricing": "Paid",
+          "verified": true
+        },
+        {
+          "name": "Power BI training (Microsoft Learn)",
+          "url": "https://learn.microsoft.com/en-us/training/powerplatform/power-bi",
+          "pricing": "Free",
+          "verified": true
+        },
+        {
+          "name": "SQLBolt interactive SQL lessons",
+          "url": "https://sqlbolt.com/",
+          "pricing": "Free",
+          "verified": true
+        },
+        {
+          "name": "Select Star SQL",
+          "url": "https://selectstarsql.com/",
+          "pricing": "Free",
+          "verified": true
+        }
+      ],
+      "cheatSheets": [
+        {
+          "name": "PostgreSQL tutorial: window functions",
+          "url": "https://www.postgresql.org/docs/current/tutorial-window.html",
+          "verified": true
+        },
+        {
+          "name": "DAX Guide",
+          "url": "https://dax.guide/",
+          "verified": true
+        }
+      ],
+      "relatedCategories": [
+        "data-science-analytics",
+        "databases-storage"
+      ],
+      "relatedAppCategories": [
+        "data",
+        "productivity"
+      ]
+    },
+    {
+      "slug": "full-stack-development",
+      "title": "Full Stack Development",
+      "icon": "layers",
+      "desc": "Frontend, backend, APIs, databases and deployment",
+      "intro": "Build complete web apps: a responsive, accessible frontend, an API backend, a database, authentication, tests and a real deployment.",
+      "roadmap": {
+        "beginner": [
+          "HTML, CSS and JavaScript fundamentals",
+          "Responsive layout and accessibility",
+          "Git and the command line"
+        ],
+        "intermediate": [
+          "React (or another framework) with TypeScript",
+          "Backend and REST APIs with Node.js / Express",
+          "SQL databases and an ORM or query builder"
+        ],
+        "advanced": [
+          "Auth and security (OWASP Top 10), automated testing",
+          "Deployment: CI/CD, containers, hosting",
+          "Performance and observability"
+        ]
+      },
+      "courses": [
+        {
+          "name": "Full Stack Open (University of Helsinki)",
+          "url": "https://fullstackopen.com/en/",
+          "pricing": "Free",
+          "verified": true
+        },
+        {
+          "name": "The Odin Project",
+          "url": "https://www.theodinproject.com/",
+          "pricing": "Free",
+          "verified": true
+        },
+        {
+          "name": "MDN: Learn web development",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development",
+          "pricing": "Free",
+          "verified": true
+        }
+      ],
+      "cheatSheets": [
+        {
+          "name": "OWASP Cheat Sheet Series",
+          "url": "https://cheatsheetseries.owasp.org/",
+          "verified": true
+        },
+        {
+          "name": "React documentation",
+          "url": "https://react.dev/learn",
+          "verified": true
+        },
+        {
+          "name": "HTTP response status codes (MDN)",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Status",
+          "verified": true
+        }
+      ],
+      "relatedCategories": [
+        "web-development",
+        "developer-tools",
+        "databases-storage"
+      ],
+      "relatedAppCategories": [
+        "coding",
+        "design",
+        "cloud"
+      ]
+    },
+    {
+      "slug": "devops",
+      "title": "DevOps",
+      "icon": "container",
+      "desc": "CI/CD, containers, Kubernetes and infra as code",
+      "intro": "Ship software reliably: automate builds and tests, package apps in containers, run them on Kubernetes, define infrastructure as code and watch it in production.",
+      "roadmap": {
+        "beginner": [
+          "Linux and shell scripting",
+          "Git branching and pull-request workflows",
+          "Docker basics: images, containers, volumes"
+        ],
+        "intermediate": [
+          "CI/CD pipelines (e.g. GitHub Actions)",
+          "Kubernetes fundamentals",
+          "Infrastructure as code with Terraform / OpenTofu"
+        ],
+        "advanced": [
+          "Observability: metrics, logs and traces",
+          "GitOps and Helm",
+          "SRE practices: SLOs and incident response"
+        ]
+      },
+      "courses": [
+        {
+          "name": "DevOps roadmap (roadmap.sh)",
+          "url": "https://roadmap.sh/devops",
+          "pricing": "Free",
+          "verified": true
+        },
+        {
+          "name": "Kubernetes tutorials (official)",
+          "url": "https://kubernetes.io/docs/tutorials/",
+          "pricing": "Free",
+          "verified": true
+        },
+        {
+          "name": "Docker: Get started (official)",
+          "url": "https://docs.docker.com/get-started/",
+          "pricing": "Free",
+          "verified": true
+        },
+        {
+          "name": "Google SRE books (free online)",
+          "url": "https://sre.google/books/",
+          "pricing": "Free",
+          "verified": true
+        },
+        {
+          "name": "KodeKloud",
+          "url": "https://kodekloud.com/",
+          "pricing": "Paid",
+          "verified": true
+        }
+      ],
+      "cheatSheets": [
+        {
+          "name": "kubectl quick reference",
+          "url": "https://kubernetes.io/docs/reference/kubectl/quick-reference/",
+          "verified": true
+        },
+        {
+          "name": "Docker CLI reference",
+          "url": "https://docs.docker.com/reference/cli/docker/",
+          "verified": true
+        }
+      ],
+      "relatedCategories": [
+        "devops-cloud",
+        "cloud-infrastructure",
+        "it-operations"
+      ],
+      "relatedAppCategories": [
+        "cloud",
+        "coding"
+      ]
+    },
+    {
+      "slug": "prompt-engineering",
+      "title": "Prompt Engineering",
+      "icon": "message",
+      "desc": "Write clear prompts and test AI model outputs",
+      "intro": "Get reliable results from language models: clear instructions, examples, structured output, retrieval, and testing prompts like code — plus the security risks to watch for.",
+      "roadmap": {
+        "beginner": [
+          "How LLMs work: tokens, context window, temperature",
+          "Clear instructions, examples and output formats",
+          "System prompts and roles"
+        ],
+        "intermediate": [
+          "Step-by-step reasoning prompts",
+          "Structured output (JSON) and tool use",
+          "Retrieval-augmented prompts (RAG)"
+        ],
+        "advanced": [
+          "Prompt evaluation sets and regression tests",
+          "Prompt injection risks and defenses",
+          "Reusable skills and prompt packs for agents"
+        ]
+      },
+      "courses": [
+        {
+          "name": "Anthropic prompt engineering interactive tutorial",
+          "url": "https://github.com/anthropics/prompt-eng-interactive-tutorial",
+          "pricing": "Free",
+          "verified": true
+        },
+        {
+          "name": "ChatGPT Prompt Engineering for Developers (DeepLearning.AI)",
+          "url": "https://www.deeplearning.ai/courses/chatgpt-prompt-eng",
+          "pricing": "Free",
+          "verified": true
+        },
+        {
+          "name": "Prompt Engineering Guide",
+          "url": "https://www.promptingguide.ai/",
+          "pricing": "Free",
+          "verified": true
+        }
+      ],
+      "cheatSheets": [
+        {
+          "name": "OpenAI prompt engineering guide",
+          "url": "https://developers.openai.com/api/docs/guides/prompt-engineering",
+          "verified": true
+        },
+        {
+          "name": "OWASP Top 10 for LLM applications",
+          "url": "https://genai.owasp.org/llm-top-10/",
+          "verified": true
+        }
+      ],
+      "relatedCategories": [
+        "ai-skills-workflows",
+        "generative-ai",
+        "rag-knowledge-systems"
+      ],
+      "relatedAppCategories": [
+        "ai-chat",
+        "coding"
+      ]
+    },
+    {
+      "slug": "loop-engineering",
+      "title": "Loop Engineering",
+      "icon": "repeat",
+      "desc": "Design AI agent loops: plan, act, check, repeat",
+      "intro": "Our working definition: designing the loop an AI agent runs — plan, call a tool, check the result, retry or stop — so it finishes tasks reliably, safely and within budget.",
+      "roadmap": {
+        "beginner": [
+          "The agent loop: goal, plan, tool call, observe",
+          "Tool / function calling",
+          "Stop conditions and step limits"
+        ],
+        "intermediate": [
+          "Self-check and retry loops (verify, fix, rerun)",
+          "Memory and state between iterations",
+          "Human-in-the-loop approvals"
+        ],
+        "advanced": [
+          "Evaluating agent loops: success rate, cost, steps",
+          "Multi-agent orchestration",
+          "Durable, long-running workflows (LangGraph, Temporal)"
+        ]
+      },
+      "courses": [
+        {
+          "name": "Building effective agents (Anthropic)",
+          "url": "https://www.anthropic.com/research/building-effective-agents",
+          "pricing": "Free",
+          "verified": true
+        },
+        {
+          "name": "Hugging Face AI Agents Course",
+          "url": "https://huggingface.co/learn/agents-course",
+          "pricing": "Free",
+          "verified": true
+        },
+        {
+          "name": "LangChain Academy",
+          "url": "https://academy.langchain.com/",
+          "pricing": "Free",
+          "verified": true
+        }
+      ],
+      "cheatSheets": [
+        {
+          "name": "Model Context Protocol documentation",
+          "url": "https://modelcontextprotocol.io/",
+          "verified": true
+        },
+        {
+          "name": "LangGraph documentation",
+          "url": "https://langchain-ai.github.io/langgraph/",
+          "verified": true
+        }
+      ],
+      "relatedCategories": [
+        "ai-agents",
+        "mcp-ecosystem",
+        "automation-integration"
+      ],
+      "relatedAppCategories": [
+        "ai-chat",
+        "productivity"
+      ]
+    }
+  ]
+}

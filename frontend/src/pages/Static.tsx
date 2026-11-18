@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
-import { EmptyState } from '../components/common';
+import { EmptyState, ExternalLink } from '../components/common';
+import { useSeo } from '../lib/seo';
+import { site, SOCIAL_LABELS, type SocialKey } from '../data/site';
 
 function Doc({ title, children }: { title: string; children: React.ReactNode }) {
   return (
@@ -12,11 +14,62 @@ function Doc({ title, children }: { title: string; children: React.ReactNode }) 
   );
 }
 
-export const About = () => (
-  <Doc title="About Virtual Skills">
+export const About = () => {
+  useSeo('About Us', site.mission);
+  const socials = (Object.keys(site.links) as SocialKey[]).filter((k) => site.links[k]);
+  return (
+  <Doc title="About Us">
+    {(site.owner.name || site.owner.role) && (
+      <p className="text-lg font-semibold text-ink">
+        {site.owner.name}
+        {site.owner.role && <span className="font-normal text-slate-600"> · {site.owner.role}</span>}
+      </p>
+    )}
+    {site.owner.bio && <p>{site.owner.bio}</p>}
     <p>
-      Virtual Skills is a discovery layer for the AI and developer ecosystem. Instead of searching many sites, you can find AI skills, MCP servers,
-      agents, models, datasets, frameworks and tools in one catalog — each linked to its original source.
+      Virtual Skills is a tech and learning hub. Instead of searching many sites, you can find AI skills, MCP servers, agents, models, IT and cloud
+      tools, learning roadmaps and useful applications in one place — each linked to its original source.
+    </p>
+    <h2>Mission</h2>
+    <p>{site.mission}</p>
+    <h2>Skills & tech stack</h2>
+    <ul className="!list-none !pl-0 flex flex-wrap gap-2">
+      {site.skills.map((s) => (
+        <li key={s} className="chip">
+          {s}
+        </li>
+      ))}
+    </ul>
+    {site.timeline.length > 0 && (
+      <>
+        <h2>Journey</h2>
+        <ol className="space-y-3 border-l-2 border-brand-100 pl-5">
+          {site.timeline.map((t) => (
+            <li key={t.year + t.title}>
+              <p className="text-sm font-semibold text-brand-700">{t.year}</p>
+              <p className="font-medium text-ink">{t.title}</p>
+              <p className="text-sm">{t.text}</p>
+            </li>
+          ))}
+        </ol>
+      </>
+    )}
+    {socials.length > 0 && (
+      <>
+        <h2>Find us online</h2>
+        <ul className="!list-none !pl-0 flex flex-wrap gap-4">
+          {socials.map((k) => (
+            <li key={k}>
+              <ExternalLink href={site.links[k]} className="text-brand-700 hover:underline">
+                {SOCIAL_LABELS[k]}
+              </ExternalLink>
+            </li>
+          ))}
+        </ul>
+      </>
+    )}
+    <p>
+      Questions or ideas? <Link to="/contact" className="text-brand-700 underline">Contact us</Link>.
     </p>
     <h2>Principles</h2>
     <ul>
@@ -37,7 +90,8 @@ export const About = () => (
     </ul>
     <p>Popularity never implies safety. “Admin reviewed” means a curator checked the listing, not that the code is guaranteed safe.</p>
   </Doc>
-);
+  );
+};
 
 export const Terms = () => (
   <Doc title="Terms of use">
@@ -82,10 +136,13 @@ export const Licenses = () => (
   </Doc>
 );
 
-export const NotFound = () => (
+export const NotFound = () => {
+  useSeo('Page not found');
+  return (
   <div className="container-page py-16">
     <EmptyState title="Page not found" icon="🧭">
       <Link to="/" className="text-brand-700 underline">Go home</Link>
     </EmptyState>
   </div>
-);
+  );
+};

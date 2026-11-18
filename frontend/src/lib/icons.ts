@@ -1,0 +1,48 @@
+import {
+  Bot,
+  Boxes,
+  Brain,
+  ChartColumn,
+  Cloud,
+  Code,
+  Container,
+  FlaskConical,
+  FolderKanban,
+  Gamepad2,
+  Globe,
+  GraduationCap,
+  Image,
+  Layers,
+  MessageSquare,
+  Palette,
+  Repeat,
+  Server,
+  Sparkles,
+  Workflow,
+  type LucideIcon,
+} from 'lucide-react';
+
+/** Icon names used in data files (resources.json, apps.json, repoSections.ts, nav.ts) → SVG icon component. */
+const ICONS: Record<string, LucideIcon> = {
+  brain: Brain,
+  server: Server,
+  cloud: Cloud,
+  code: Code,
+  flask: FlaskConical,
+  chart: ChartColumn,
+  layers: Layers,
+  container: Container,
+  message: MessageSquare,
+  repeat: Repeat,
+  bot: Bot,
+  image: Image,
+  palette: Palette,
+  workflow: Workflow,
+  graduation: GraduationCap,
+  globe: Globe,
+  gamepad: Gamepad2,
+  boxes: Boxes,
+  project: FolderKanban,
+};
+
+export const iconFor = (name: string | null | undefined): LucideIcon => (name && ICONS[name]) || Sparkles;

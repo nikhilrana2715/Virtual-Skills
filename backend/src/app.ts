@@ -9,6 +9,7 @@ import { publicRouter } from './modules/public.js';
 import { meRouter } from './modules/me.js';
 import { adminRouter } from './modules/admin.js';
 import { getDb } from './database/db.js';
+import { sitemapHandler } from './modules/sitemap.js';
 
 export function createApp() {
   const app = express();
@@ -28,6 +29,8 @@ export function createApp() {
     getDb().prepare('SELECT 1').get();
     res.json({ ok: true, name: 'Virtual Skills API' });
   });
+
+  app.get('/sitemap.xml', sitemapHandler);
 
   const v1 = express.Router();
   v1.use(csrfGuard);

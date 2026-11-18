@@ -52,6 +52,15 @@ frontend/src/
   lib/             api client, auth context
 ```
 
+## Site sections (v1.3, from WEBSITE_UPGRADE_PROMPT.md)
+- Header = `frontend/src/data/nav.ts`: About Us · Our Resources ▾ · Our Repository · Our Applications · Our Projects · Contact Us + "Get in Touch".
+- Editable content lives in `frontend/src/data/`: `resources.json` (topics → `/topics/:slug`), `apps.json`, `projects.json`, `site.ts` (owner, links), `repoSections.ts` (category → Repository section).
+- Repos stay in the DB (admin import/sync). Repository sections are derived from each repo's single category; unmapped categories → "Others".
+- `/resources/:slug` is still a single repo detail page (old links); topic pages use `/topics/:slug`.
+- Adding a topic: add it to `resources.json` AND `TOPIC_SLUGS` in `backend/src/modules/sitemap.ts` (test enforces).
+- After editing external URLs: `npm run verify-links -w frontend`.
+- Contact form → `POST /api/v1/contact` → `contact_messages` table → Admin → Messages.
+
 ## Conventions
 - API prefix `/api/v1`. JSON errors `{ error: string, details? }`.
 - Server-side pagination: `page`, `limit` (max 50).

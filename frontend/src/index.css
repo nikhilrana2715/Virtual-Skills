@@ -52,6 +52,26 @@ body {
 @utility chip {
   @apply inline-flex items-center rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-medium text-slate-700;
 }
+/* Menu motion: fade + slide (~220ms). Disabled for prefers-reduced-motion. */
+@keyframes mega-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: none; }
+}
+.mega-enter { animation: mega-in 220ms ease-out; }
+.drawer-fade { animation: fade-in 220ms ease-out; }
+.drawer-slide { animation: slide-in-right 220ms ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  .mega-enter, .drawer-fade, .drawer-slide { animation: none; }
+}
+
 @utility container-page {
   @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
 }

@@ -166,3 +166,58 @@ describe('admin', () => {
     expect(res.status).toBe(400);
   });
 });
+
+describe('website upgrade: contact, repository sections, sitemap', () => {
+  const msg = { name: 'Test User', email: 'Test@Example.com', subject: 'Hello there', message: 'This is a test message.' };
+
+  it('accepts a valid contact message and rejects bad input, bots and missing CSRF header', async () => {
+    const ok = await request(app).post('/api/v1/contact').set(H).send(msg);
+    expect(ok.status).toBe(201);
+    expect(ok.body.id).toBeTruthy();
+    const row = getDb().prepare('SELECT email, status FROM contact_messages WHERE id=?').get(ok.body.id) as { email: string; status: string };
+    expect(row).toEqual({ email: 'test@example.com', status: 'new' });
+
+    expect((await request(app).post('/api/v1/contact').set(H).send({ ...msg, email: 'nope' })).status).toBe(400);
+    expect((await request(app).post('/api/v1/contact').set(H).send({ ...msg, message: 'short' })).status).toBe(400);
+    expect((await request(app).post('/api/v1/contact').set(H).send({ ...msg, website: 'http://spam' })).status).toBe(400);
+    expect((await request(app).post('/api/v1/contact').send(msg)).status).toBe(403);
+  });
+
+  it('admin-only message inbox with audit log', async () => {
+    expect((await request(app).get('/api/v1/admin/messages')).status).toBe(401);
+    const admin = await login('admin@virtualskills.local', 'ChangeMe123!');
+    const list = await admin.get('/api/v1/admin/messages');
+    expect(list.status).toBe(200);
+    const id = list.body.items[0].id;
+    expect((await admin.patch(`/api/v1/admin/messages/${id}`).set(H).send({ status: 'read' })).status).toBe(200);
+    expect((await admin.patch(`/api/v1/admin/messages/${id}`).set(H).send({ status: 'bogus' })).status).toBe(400);
+    expect((await admin.delete(`/api/v1/admin/messages/${id}`).set(H)).status).toBe(200);
+    expect((await admin.delete(`/api/v1/admin/messages/${id}`).set(H)).status).toBe(404);
+    const actions = (getDb().prepare(`SELECT action FROM audit_logs WHERE entity_id=?`).all(id) as { action: string }[]).map((a) => a.action);
+    expect(actions).toEqual(expect.arrayContaining(['message.update', 'message.delete']));
+  });
+
+  it('filters resources by a comma-separated category list', async () => {
+    const a = (await request(app).get('/api/v1/resources?category=networking&limit=50')).body.total;
+    const b = (await request(app).get('/api/v1/resources?category=databases-storage&limit=50')).body.total;
+    const both = await request(app).get('/api/v1/resources?category=networking,databases-storage&limit=50');
+    expect(both.body.total).toBe(a + b);
+    expect((await request(app).get('/api/v1/resources?category=bad%20slug')).status).toBe(400);
+  });
+
+  it('serves sitemap.xml with static pages, topics and resources', async () => {
+    const res = await request(app).get('/sitemap.xml');
+    expect(res.status).toBe(200);
+    expect(res.type).toBe('application/xml');
+    expect(res.text).toContain('/topics/ai-ml</loc>');
+    expect(res.text).toContain('/repository</loc>');
+    expect(res.text).toContain('/resources/terraform</loc>');
+  });
+
+  it('sitemap topic slugs match frontend resources.json', async () => {
+    const { TOPIC_SLUGS } = await import('../src/modules/sitemap.js');
+    const file = new URL('../../frontend/src/data/resources.json', import.meta.url);
+    const json = JSON.parse((await import('node:fs')).readFileSync(file, 'utf8')) as { topics: { slug: string }[] };
+    expect(TOPIC_SLUGS).toEqual(json.topics.map((t) => t.slug));
+  });
+});

@@ -112,8 +112,12 @@ export function listResources(f: ResourceFilters, opts: { admin?: boolean } = {}
     params.push(like, like, like, like, like, like, like, like);
   }
   if (f.category) {
-    where.push('c.slug = ?');
-    params.push(f.category);
+    // One slug, or a comma-separated list (used by the Repository page's section tabs).
+    const slugs = [...new Set(f.category.split(',').map((s) => s.trim()).filter(Boolean))];
+    if (slugs.length) {
+      where.push(`c.slug IN (${slugs.map(() => '?').join(',')})`);
+      params.push(...slugs);
+    }
   }
   if (f.type) {
     where.push('r.resource_type = ?');

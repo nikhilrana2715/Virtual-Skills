@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "verify-links": "node scripts/verify-links.mjs"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.5",

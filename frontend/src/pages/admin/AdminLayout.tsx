@@ -6,6 +6,7 @@ const LINKS = [
   ['/admin/imports', 'Import from GitHub'],
   ['/admin/categories', 'Categories & tags'],
   ['/admin/reports', 'Reports'],
+  ['/admin/messages', 'Messages'],
   ['/admin/sync-jobs', 'Sync jobs'],
   ['/admin/users', 'Users'],
   ['/admin/audit-logs', 'Audit log'],

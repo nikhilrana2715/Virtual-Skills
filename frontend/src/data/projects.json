@@ -1,0 +1,20 @@
+{
+  "_note": "Projects you built. Fill in null fields — nothing here is guessed. status: \"Live\" | \"In progress\" | null. screenshot: path under frontend/public (e.g. /projects/kpi-dashboard.webp).",
+  "projects": [
+    { "name": "Sticker Print Studio", "problem": null, "techStack": [], "status": null, "liveUrl": null, "githubUrl": null, "screenshot": null },
+    { "name": "KPI Dashboard", "problem": null, "techStack": [], "status": null, "liveUrl": null, "githubUrl": null, "screenshot": null },
+    { "name": "Tooling System", "problem": null, "techStack": [], "status": null, "liveUrl": null, "githubUrl": null, "screenshot": null },
+    { "name": "PC-Reminder", "problem": null, "techStack": [], "status": null, "liveUrl": null, "githubUrl": null, "screenshot": null },
+    { "name": "Running Game", "problem": null, "techStack": [], "status": null, "liveUrl": null, "githubUrl": null, "screenshot": null },
+    { "name": "Roni Voice Assistant", "problem": null, "techStack": [], "status": null, "liveUrl": null, "githubUrl": null, "screenshot": null },
+    {
+      "name": "Virtual Skills",
+      "problem": "One place to discover AI, IT and cloud resources, each linked to its original source.",
+      "techStack": ["React", "TypeScript", "Vite", "Tailwind CSS", "Node.js", "Express", "SQLite"],
+      "status": "In progress",
+      "liveUrl": null,
+      "githubUrl": "https://github.com/nikhilrana2715/Virtual-Skills",
+      "screenshot": null
+    }
+  ]
+}

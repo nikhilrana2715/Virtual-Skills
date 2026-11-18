@@ -6,6 +6,7 @@ import {
   createResource, deleteResource, findDuplicate, getResourceRow, listResources, toApi, updateResource,
 } from '../database/resourceRepo.js';
 import { audit } from '../database/audit.js';
+import { countNewContactMessages, deleteContactMessage, listContactMessages, setContactStatus } from '../database/contactRepo.js';
 import { requireAdmin } from '../middleware/auth.js';
 import { HttpError } from '../middleware/errors.js';
 import { githubProvider } from '../providers/github/github.js';
@@ -78,6 +79,7 @@ adminRouter.get('/stats', (_req, res) => {
     stale: one(`SELECT count(*) n FROM resources WHERE provider='github' AND (last_synced_at IS NULL OR last_synced_at < ?)`, staleCutoff),
     syncErrors: one(`SELECT count(*) n FROM resources WHERE sync_error IS NOT NULL`),
     openReports: one(`SELECT count(*) n FROM resource_reports WHERE status='open'`),
+    newMessages: countNewContactMessages(),
     users: one('SELECT count(*) n FROM users'),
     byCategory: db
       .prepare(`SELECT c.name, count(r.id) n FROM categories c LEFT JOIN resources r ON r.category_id=c.id GROUP BY c.id ORDER BY n DESC`)
@@ -323,6 +325,24 @@ adminRouter.patch('/reports/:id', (req, res) => {
   const { status } = z.object({ status: z.enum(['open', 'resolved', 'dismissed']) }).parse(req.body);
   getDb().prepare('UPDATE resource_reports SET status=? WHERE id=?').run(status, String(req.params.id));
   audit(req.user!.id, 'report.update', 'report', String(req.params.id), { status });
+  res.json({ ok: true });
+});
+
+// ---- Contact messages ----
+adminRouter.get('/messages', (_req, res) => {
+  res.json({ items: listContactMessages() });
+});
+adminRouter.patch('/messages/:id', (req, res) => {
+  const { status } = z.object({ status: z.enum(['new', 'read', 'archived']) }).parse(req.body);
+  const id = String(req.params.id);
+  if (!setContactStatus(id, status)) throw new HttpError(404, 'Message not found');
+  audit(req.user!.id, 'message.update', 'contact_message', id, { status });
+  res.json({ ok: true });
+});
+adminRouter.delete('/messages/:id', (req, res) => {
+  const id = String(req.params.id);
+  if (!deleteContactMessage(id)) throw new HttpError(404, 'Message not found');
+  audit(req.user!.id, 'message.delete', 'contact_message', id);
   res.json({ ok: true });
 });
 

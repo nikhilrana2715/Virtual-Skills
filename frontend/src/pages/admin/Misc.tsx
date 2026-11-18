@@ -160,6 +160,62 @@ export function AdminReports() {
   );
 }
 
+interface ContactMessage {
+  id: string;
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+  status: 'new' | 'read' | 'archived';
+  created_at: string;
+}
+
+export function AdminMessages() {
+  const qc = useQueryClient();
+  const q = useList<{ items: ContactMessage[] }>('admin-messages', '/admin/messages');
+  const upd = useMutation({
+    mutationFn: ({ id, status }: { id: string; status: string }) => api(`/admin/messages/${id}`, { method: 'PATCH', body: { status } }),
+    onSuccess: () => qc.invalidateQueries(),
+  });
+  const del = useMutation({
+    mutationFn: (id: string) => api(`/admin/messages/${id}`, { method: 'DELETE' }),
+    onSuccess: () => qc.invalidateQueries(),
+  });
+  return (
+    <>
+      <PageHeader title="Messages" subtitle="Messages sent from the Contact Us form." />
+      {q.isLoading ? <Spinner /> : q.error ? <ErrorState error={q.error} /> : q.data!.items.length === 0 ? <EmptyState title="No messages yet" icon="📭" /> : (
+        <ul className="space-y-3">
+          {q.data!.items.map((m) => (
+            <li key={m.id} className={`card p-5 ${m.status === 'new' ? 'border-brand-200' : ''}`}>
+              <div className="flex flex-wrap items-start justify-between gap-2">
+                <div className="min-w-0">
+                  <p className="font-semibold text-ink">{m.subject}</p>
+                  <p className="text-sm text-slate-600">
+                    {m.name} · <a href={`mailto:${m.email}`} className="text-brand-700 hover:underline">{m.email}</a> · {new Date(m.created_at).toLocaleString()}
+                  </p>
+                </div>
+                <span className={`chip ${m.status === 'new' ? 'bg-brand-100 text-brand-800' : ''}`}>{m.status}</span>
+              </div>
+              <p className="mt-3 whitespace-pre-line text-sm text-slate-700">{m.message}</p>
+              <div className="mt-3 flex flex-wrap gap-1">
+                {m.status !== 'read' && <button className="btn-ghost px-2 py-1 text-xs" onClick={() => upd.mutate({ id: m.id, status: 'read' })}>Mark read</button>}
+                {m.status !== 'archived' && <button className="btn-ghost px-2 py-1 text-xs" onClick={() => upd.mutate({ id: m.id, status: 'archived' })}>Archive</button>}
+                <button
+                  className="btn-ghost px-2 py-1 text-xs text-red-700 hover:bg-red-50"
+                  onClick={() => confirm(`Delete message from ${m.name}? This cannot be undone.`) && del.mutate(m.id)}
+                >
+                  Delete
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </>
+  );
+}
+
 export function AdminSyncJobs() {
   const qc = useQueryClient();
   const q = useList<{ items: { id: string; provider: string; kind: string; status: string; started_at: string; finished_at: string | null; items_processed: number; items_failed: number; error_summary: string | null }[] }>('admin-sync', '/admin/sync-jobs');

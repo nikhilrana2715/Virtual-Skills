@@ -1,0 +1,334 @@
+{
+  "_note": "External tech/IT/AI websites. Add an app = add one entry. url = official site only. image = path under frontend/public (e.g. /apps/figma.webp) or null (a lettered tile is shown). verified is set by `npm run verify-links -w frontend`.",
+  "categories": [
+    {
+      "id": "ai-chat",
+      "label": "AI Chat & Assistants",
+      "desc": "AI chatbots and assistants for everyday work",
+      "icon": "bot"
+    },
+    {
+      "id": "ai-media",
+      "label": "AI Image / Video / Audio",
+      "desc": "Generate images, video and voice with AI",
+      "icon": "image"
+    },
+    {
+      "id": "coding",
+      "label": "Coding & Dev Tools",
+      "desc": "Code hosting, editors and AI coding tools",
+      "icon": "code"
+    },
+    {
+      "id": "design",
+      "label": "Design & UI",
+      "desc": "Interface design, graphics and whiteboards",
+      "icon": "palette"
+    },
+    {
+      "id": "cloud",
+      "label": "Cloud & Hosting",
+      "desc": "Hosting, CDN and cloud platforms",
+      "icon": "cloud"
+    },
+    {
+      "id": "data",
+      "label": "Data & Analytics",
+      "desc": "Datasets, notebooks and BI dashboards",
+      "icon": "chart"
+    },
+    {
+      "id": "productivity",
+      "label": "Productivity & Automation",
+      "desc": "Notes, tasks and no-code automation",
+      "icon": "workflow"
+    },
+    {
+      "id": "learning",
+      "label": "Learning Platforms",
+      "desc": "Courses, roadmaps and free lessons",
+      "icon": "graduation"
+    }
+  ],
+  "apps": [
+    {
+      "name": "Claude",
+      "category": "ai-chat",
+      "description": "AI assistant by Anthropic for writing, analysis and coding",
+      "url": "https://claude.ai/",
+      "pricing": "Freemium",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "ChatGPT",
+      "category": "ai-chat",
+      "description": "AI chat assistant by OpenAI",
+      "url": "https://chatgpt.com/",
+      "pricing": "Freemium",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "Google Gemini",
+      "category": "ai-chat",
+      "description": "Google's AI assistant",
+      "url": "https://gemini.google.com/",
+      "pricing": "Freemium",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "Perplexity",
+      "category": "ai-chat",
+      "description": "AI answer engine that cites its sources",
+      "url": "https://www.perplexity.ai/",
+      "pricing": "Freemium",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "Midjourney",
+      "category": "ai-media",
+      "description": "AI image generation from text prompts",
+      "url": "https://www.midjourney.com/",
+      "pricing": "Paid",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "Runway",
+      "category": "ai-media",
+      "description": "AI video generation and editing tools",
+      "url": "https://runway.com/",
+      "pricing": "Freemium",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "ElevenLabs",
+      "category": "ai-media",
+      "description": "AI voice generation and text-to-speech",
+      "url": "https://elevenlabs.io/",
+      "pricing": "Freemium",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "Adobe Firefly",
+      "category": "ai-media",
+      "description": "Adobe's generative AI for images and video",
+      "url": "https://firefly.adobe.com/",
+      "pricing": "Freemium",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "GitHub",
+      "category": "coding",
+      "description": "Code hosting, pull requests, Actions and Copilot",
+      "url": "https://github.com/",
+      "pricing": "Freemium",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "Visual Studio Code",
+      "category": "coding",
+      "description": "Free, extensible code editor by Microsoft",
+      "url": "https://code.visualstudio.com/",
+      "pricing": "Free",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "Cursor",
+      "category": "coding",
+      "description": "AI-first code editor",
+      "url": "https://cursor.com/",
+      "pricing": "Freemium",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "Replit",
+      "category": "coding",
+      "description": "Browser IDE to build and deploy apps",
+      "url": "https://replit.com/",
+      "pricing": "Freemium",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "Figma",
+      "category": "design",
+      "description": "Collaborative interface design and prototyping",
+      "url": "https://www.figma.com/",
+      "pricing": "Freemium",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "Canva",
+      "category": "design",
+      "description": "Easy graphic design for social, slides and print",
+      "url": "https://www.canva.com/",
+      "pricing": "Freemium",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "Excalidraw",
+      "category": "design",
+      "description": "Hand-drawn style whiteboard for diagrams",
+      "url": "https://excalidraw.com/",
+      "pricing": "Free",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "Vercel",
+      "category": "cloud",
+      "description": "Frontend hosting and serverless functions",
+      "url": "https://vercel.com/",
+      "pricing": "Freemium",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "Netlify",
+      "category": "cloud",
+      "description": "Hosting and CI for modern web projects",
+      "url": "https://www.netlify.com/",
+      "pricing": "Freemium",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "Cloudflare",
+      "category": "cloud",
+      "description": "CDN, DNS, security and edge computing",
+      "url": "https://www.cloudflare.com/",
+      "pricing": "Freemium",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "Amazon Web Services",
+      "category": "cloud",
+      "description": "Cloud computing platform by Amazon",
+      "url": "https://aws.amazon.com/",
+      "pricing": "Freemium",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "Kaggle",
+      "category": "data",
+      "description": "Datasets, notebooks and data science competitions",
+      "url": "https://www.kaggle.com/",
+      "pricing": "Free",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "Google Colab",
+      "category": "data",
+      "description": "Hosted Jupyter notebooks with free GPUs",
+      "url": "https://colab.research.google.com/",
+      "pricing": "Freemium",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "Power BI",
+      "category": "data",
+      "description": "Microsoft business intelligence and dashboards",
+      "url": "https://www.microsoft.com/en-us/power-platform/products/power-bi",
+      "pricing": "Freemium",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "Looker Studio",
+      "category": "data",
+      "description": "Google's free reports and dashboards",
+      "url": "https://lookerstudio.google.com/",
+      "pricing": "Free",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "Notion",
+      "category": "productivity",
+      "description": "Notes, docs, wikis and project tracking",
+      "url": "https://www.notion.com/",
+      "pricing": "Freemium",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "Zapier",
+      "category": "productivity",
+      "description": "No-code automation between web apps",
+      "url": "https://zapier.com/",
+      "pricing": "Freemium",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "n8n",
+      "category": "productivity",
+      "description": "Workflow automation you can self-host",
+      "url": "https://n8n.io/",
+      "pricing": "Freemium",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "Trello",
+      "category": "productivity",
+      "description": "Kanban boards for tasks and projects",
+      "url": "https://trello.com/",
+      "pricing": "Freemium",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "Coursera",
+      "category": "learning",
+      "description": "University and industry courses and certificates",
+      "url": "https://www.coursera.org/",
+      "pricing": "Freemium",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "freeCodeCamp",
+      "category": "learning",
+      "description": "Free coding curriculum and certifications",
+      "url": "https://www.freecodecamp.org/",
+      "pricing": "Free",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "Khan Academy",
+      "category": "learning",
+      "description": "Free lessons in math, science and computing",
+      "url": "https://www.khanacademy.org/",
+      "pricing": "Free",
+      "image": null,
+      "verified": true
+    },
+    {
+      "name": "roadmap.sh",
+      "category": "learning",
+      "description": "Step-by-step developer learning roadmaps",
+      "url": "https://roadmap.sh/",
+      "pricing": "Free",
+      "image": null,
+      "verified": true
+    }
+  ]
+}

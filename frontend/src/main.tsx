@@ -13,6 +13,11 @@ import { Categories, Latest, Trending } from './pages/Lists';
 import { Login, Register } from './pages/Auth';
 import { About, Licenses, NotFound, Privacy, Terms } from './pages/Static';
 import { Bookmarks, Profile } from './pages/account/Account';
+import { ResourcesHub, TopicPage } from './pages/Resources';
+import Repository from './pages/Repository';
+import Applications from './pages/Applications';
+import Projects from './pages/Projects';
+import Contact from './pages/Contact';
 
 const AdminLayout = lazy(() => import('./pages/admin/AdminLayout'));
 const Dashboard = lazy(() => import('./pages/admin/Dashboard'));
@@ -24,6 +29,7 @@ const AdminCategories = lazy(() => misc().then((m) => ({ default: m.AdminCategor
 const AdminUsers = lazy(() => misc().then((m) => ({ default: m.AdminUsers })));
 const AdminReports = lazy(() => misc().then((m) => ({ default: m.AdminReports })));
 const AdminSyncJobs = lazy(() => misc().then((m) => ({ default: m.AdminSyncJobs })));
+const AdminMessages = lazy(() => misc().then((m) => ({ default: m.AdminMessages })));
 const AdminAudit = lazy(() => misc().then((m) => ({ default: m.AdminAudit })));
 
 const qc = new QueryClient({
@@ -58,6 +64,20 @@ createRoot(document.getElementById('root')!).render(
                 <Route path="login" element={<Login />} />
                 <Route path="register" element={<Register />} />
                 <Route path="about" element={<About />} />
+                <Route path="resources" element={<ResourcesHub />} />
+                <Route path="topics/:slug" element={<TopicPage />} />
+                <Route path="repository" element={<Repository />} />
+                <Route path="applications" element={<Applications />} />
+                <Route path="projects" element={<Projects />} />
+                <Route path="contact" element={<Contact />} />
+                {/* Aliases so common/guessable URLs never 404 */}
+                <Route path="about-us" element={<Navigate to="/about" replace />} />
+                <Route path="contact-us" element={<Navigate to="/contact" replace />} />
+                <Route path="topics" element={<Navigate to="/resources" replace />} />
+                <Route path="repositories" element={<Navigate to="/repository" replace />} />
+                <Route path="repos" element={<Navigate to="/repository" replace />} />
+                <Route path="apps" element={<Navigate to="/applications" replace />} />
+                <Route path="our-projects" element={<Navigate to="/projects" replace />} />
                 <Route path="terms" element={<Terms />} />
                 <Route path="privacy" element={<Privacy />} />
                 <Route path="licenses" element={<Licenses />} />
@@ -72,6 +92,7 @@ createRoot(document.getElementById('root')!).render(
                   <Route path="categories" element={<AdminCategories />} />
                   <Route path="users" element={<AdminUsers />} />
                   <Route path="reports" element={<AdminReports />} />
+                  <Route path="messages" element={<AdminMessages />} />
                   <Route path="sync-jobs" element={<AdminSyncJobs />} />
                   <Route path="audit-logs" element={<AdminAudit />} />
                 </Route>

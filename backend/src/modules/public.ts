@@ -3,6 +3,7 @@ import rateLimit from 'express-rate-limit';
 import { z } from 'zod';
 import { getDb, RESOURCE_TYPES, uuid } from '../database/db.js';
 import { facets, getResourceRow, incrementView, listResources, related, toApi, trending } from '../database/resourceRepo.js';
+import { createContactMessage } from '../database/contactRepo.js';
 import { HttpError } from '../middleware/errors.js';
 import { env } from '../config/env.js';
 
@@ -13,7 +14,8 @@ const searchLimiter = rateLimit({ windowMs: 60_000, limit: env.isTest ? 10_000 :
 const bool = z.preprocess((v) => v === 'true' || v === '1' || v === true, z.boolean()).optional();
 export const listQuerySchema = z.object({
   q: z.string().trim().max(100).optional(),
-  category: z.string().max(80).optional(),
+  // single slug or comma-separated list of slugs
+  category: z.string().max(1000).regex(/^[a-z0-9,-]*$/, 'Invalid category').optional(),
   type: z.enum(RESOURCE_TYPES).optional(),
   provider: z.string().max(30).optional(),
   language: z.string().max(40).optional(),
@@ -95,6 +97,22 @@ publicRouter.get('/stats', (_req, res) => {
     categories: one(`SELECT count(*) n FROM categories`),
     verified: one(`SELECT count(*) n FROM resources WHERE publication_status='published' AND verification_status='verified'`),
   });
+});
+
+const contactSchema = z.object({
+  name: z.string().trim().min(2).max(80),
+  email: z.string().trim().toLowerCase().email().max(254),
+  subject: z.string().trim().min(3).max(120),
+  message: z.string().trim().min(10).max(4000),
+  // Honeypot: real users never fill this hidden field.
+  website: z.string().max(0).optional(),
+});
+const contactLimiter = rateLimit({ windowMs: 60 * 60 * 1000, limit: env.isTest ? 1000 : 5, standardHeaders: 'draft-8', legacyHeaders: false });
+
+publicRouter.post('/contact', contactLimiter, (req, res) => {
+  const body = contactSchema.parse(req.body);
+  const id = createContactMessage({ name: body.name, email: body.email, subject: body.subject, message: body.message, userId: req.user?.id ?? null });
+  res.status(201).json({ ok: true, id });
 });
 
 const reportSchema = z.object({

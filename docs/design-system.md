@@ -41,6 +41,7 @@
 - Don't mix emoji and SVG for mapped items.
 
 ## Changelog
+- **v1.3** (2026-11-18): new 6-item header + "Get in Touch" pill CTA (kept blue brand look); Resources mega panel (3 cols, fade/slide 220ms, reduced-motion safe); slide-in mobile drawer; pages Resources/Topic, Repository, Applications, Projects, Contact; `Card / App`, `Monogram` tile, `PricingTag`.
 - **v1.2** (2026-11-18): icons on every mega-menu item, menu intro cards and mobile accordion (`lucide-react`).
 - **v1.1** (2026-11-18): mega menu (AI & ML, IT & Cloud, Developers, Resource types, Discover); 7 IT/Cloud categories + 39 resources; added `brand-300/800/900`, `shadow-menu`; replaced raw `blue-*` with brand.
 - **v1.0**: initial tokens + utilities.

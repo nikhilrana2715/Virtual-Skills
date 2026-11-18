@@ -5,7 +5,7 @@ import { ErrorState, PageHeader, Spinner } from '../../components/common';
 
 interface Stats {
   total: number; published: number; draft: number; archived: number; pendingReview: number; stale: number; syncErrors: number;
-  openReports: number; users: number;
+  openReports: number; newMessages: number; users: number;
   byCategory: { name: string; n: number }[]; byProvider: { name: string; n: number }[];
   mostViewed: { name: string; slug: string; n: number }[]; mostSaved: { name: string; slug: string; n: number }[];
 }
@@ -45,6 +45,7 @@ export default function Dashboard() {
     ['Stale metadata (>7d)', s.stale, '/admin/sync-jobs'],
     ['Sync errors', s.syncErrors, '/admin/sync-jobs'],
     ['Open reports', s.openReports, '/admin/reports'],
+    ['New messages', s.newMessages, '/admin/messages'],
     ['Users', s.users, '/admin/users'],
   ];
   return (

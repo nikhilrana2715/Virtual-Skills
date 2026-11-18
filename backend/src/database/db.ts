@@ -122,6 +122,17 @@ CREATE TABLE IF NOT EXISTS resource_reports (
   created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now'))
 );
 
+CREATE TABLE IF NOT EXISTS contact_messages (
+  id TEXT PRIMARY KEY,
+  name TEXT NOT NULL,
+  email TEXT NOT NULL,
+  subject TEXT NOT NULL,
+  message TEXT NOT NULL,
+  user_id TEXT REFERENCES users(id) ON DELETE SET NULL,
+  status TEXT NOT NULL DEFAULT 'new',
+  created_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now'))
+);
+
 CREATE TABLE IF NOT EXISTS audit_logs (
   id TEXT PRIMARY KEY,
   actor_user_id TEXT REFERENCES users(id) ON DELETE SET NULL,
@@ -146,7 +157,7 @@ export function getDb(): DatabaseSync {
 export function resetDb(): void {
   const d = getDb();
   d.exec(`
-    DROP TABLE IF EXISTS audit_logs; DROP TABLE IF EXISTS resource_reports; DROP TABLE IF EXISTS sync_jobs;
+    DROP TABLE IF EXISTS audit_logs; DROP TABLE IF EXISTS contact_messages; DROP TABLE IF EXISTS resource_reports; DROP TABLE IF EXISTS sync_jobs;
     DROP TABLE IF EXISTS bookmarks; DROP TABLE IF EXISTS resource_tags; DROP TABLE IF EXISTS resources;
     DROP TABLE IF EXISTS tags; DROP TABLE IF EXISTS categories; DROP TABLE IF EXISTS users;
   `);
