@@ -91,7 +91,7 @@ export function StatusBadge({ value }: { value: string }) {
     draft: 'bg-amber-100 text-amber-800',
     unreviewed: 'bg-slate-100 text-slate-700',
     partial: 'bg-amber-100 text-amber-800',
-    running: 'bg-blue-100 text-blue-800',
+    running: 'bg-brand-100 text-brand-800',
     open: 'bg-amber-100 text-amber-800',
     archived: 'bg-slate-200 text-slate-700',
     rejected: 'bg-red-100 text-red-800',

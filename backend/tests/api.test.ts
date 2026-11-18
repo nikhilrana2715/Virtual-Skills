@@ -1,7 +1,8 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 import request from 'supertest';
 import { createApp } from '../src/app.js';
-import { seed } from '../src/database/seed.js';
+import { addCatalog, seed } from '../src/database/seed.js';
+import { CATEGORIES } from '../src/database/seedData.js';
 import { getDb } from '../src/database/db.js';
 
 const app = createApp();
@@ -40,6 +41,17 @@ describe('public API', () => {
     expect(f.body.total).toBeGreaterThanOrEqual(3);
   });
 
+  it('includes IT & Cloud categories, and addCatalog is idempotent', async () => {
+    const res = await request(app).get('/api/v1/categories');
+    const slugs = res.body.categories.map((c: { slug: string }) => c.slug);
+    expect(slugs).toEqual(expect.arrayContaining(['cloud-infrastructure', 'it-operations', 'it-service-management', 'networking', 'databases-storage', 'cybersecurity-defense', 'automation-integration']));
+    const cloud = await request(app).get('/api/v1/resources?category=cloud-infrastructure');
+    expect(cloud.body.items.map((r: { name: string }) => r.name)).toContain('Terraform');
+    const before = (getDb().prepare('SELECT COUNT(*) AS n FROM resources').get() as { n: number }).n;
+    expect(addCatalog()).toEqual({ categories: 0, resources: 0 });
+    expect((getDb().prepare('SELECT COUNT(*) AS n FROM resources').get() as { n: number }).n).toBe(before);
+  });
+
   it('rejects invalid query params', async () => {
     expect((await request(app).get('/api/v1/resources?type=evil')).status).toBe(400);
     expect((await request(app).get('/api/v1/resources?limit=999')).status).toBe(400);
@@ -60,7 +72,7 @@ describe('public API', () => {
   });
 
   it('categories, trending, latest, facets', async () => {
-    expect((await request(app).get('/api/v1/categories')).body.categories).toHaveLength(14);
+    expect((await request(app).get('/api/v1/categories')).body.categories).toHaveLength(CATEGORIES.length);
     expect((await request(app).get('/api/v1/trending')).body.items.length).toBeGreaterThan(0);
     expect((await request(app).get('/api/v1/latest')).body.items.length).toBeGreaterThan(0);
     expect((await request(app).get('/api/v1/facets')).body.languages.length).toBeGreaterThan(0);

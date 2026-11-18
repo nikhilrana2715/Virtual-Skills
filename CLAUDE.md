@@ -18,6 +18,7 @@ Public browse/search + optional accounts (bookmarks) + admin-curated catalog + G
 ## Commands (run from repo root)
 - `npm install` — installs both workspaces.
 - `npm run seed` — reset DB + seed categories, tags, curated resources, admin user.
+- `npm run seed:add` — insert only missing curated categories/resources (no reset, keeps users/bookmarks).
 - `npm run dev` — backend :5000 + frontend :5173 (Vite proxies `/api`).
 - `npm test` — backend unit tests (vitest).
 - `npm run build` — typecheck + build frontend.

@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "concurrently -n api,web -c blue,green \"npm:dev -w backend\" \"npm:dev -w frontend\"",
     "seed": "npm run seed -w backend",
+    "seed:add": "npm run seed:add -w backend",
     "test": "npm test -w backend",
     "build": "npm run typecheck -w backend && npm run build -w frontend"
   },

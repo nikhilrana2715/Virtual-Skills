@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react';
-import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import { useAuth } from '../lib/auth';
+import { MegaMenu, MobileMegaMenu, useMenus } from './MegaMenu';
 
 export function Logo() {
   return (
@@ -13,13 +14,6 @@ export function Logo() {
     </Link>
   );
 }
-
-const NAV = [
-  { to: '/explore', label: 'Explore' },
-  { to: '/categories', label: 'Categories' },
-  { to: '/trending', label: 'Trending' },
-  { to: '/latest', label: 'Latest' },
-];
 
 function UserMenu() {
   const { user, logout } = useAuth();
@@ -80,7 +74,7 @@ export function HeaderSearch() {
     nav(`/explore${q.trim() ? `?q=${encodeURIComponent(q.trim())}` : ''}`);
   };
   return (
-    <form onSubmit={submit} role="search" className="hidden max-w-xs flex-1 md:block">
+    <form onSubmit={submit} role="search" className="hidden max-w-xs flex-1 md:block lg:hidden xl:block">
       <input className="input bg-slate-50" placeholder="Search resources…" value={q} onChange={(e) => setQ(e.target.value)} aria-label="Search resources" />
     </form>
   );
@@ -88,25 +82,16 @@ export function HeaderSearch() {
 
 export function Layout() {
   const [mobile, setMobile] = useState(false);
+  const menus = useMenus();
   return (
     <div className="flex min-h-screen flex-col">
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 btn-primary">
         Skip to content
       </a>
       <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/90 backdrop-blur">
-        <div className="container-page flex h-16 items-center gap-6">
+        <div className="container-page flex h-16 items-center gap-4 xl:gap-6">
           <Logo />
-          <nav className="hidden items-center gap-1 lg:flex" aria-label="Main">
-            {NAV.map((n) => (
-              <NavLink
-                key={n.to}
-                to={n.to}
-                className={({ isActive }) => `btn-ghost ${isActive ? 'bg-brand-50 text-brand-700' : ''}`}
-              >
-                {n.label}
-              </NavLink>
-            ))}
-          </nav>
+          <MegaMenu menus={menus} />
           <div className="ml-auto flex flex-1 items-center justify-end gap-3">
             <HeaderSearch />
             <UserMenu />
@@ -117,15 +102,7 @@ export function Layout() {
             </button>
           </div>
         </div>
-        {mobile && (
-          <nav className="container-page flex flex-col gap-1 border-t border-slate-100 py-3 lg:hidden" aria-label="Mobile">
-            {NAV.map((n) => (
-              <NavLink key={n.to} to={n.to} className="btn-ghost justify-start" onClick={() => setMobile(false)}>
-                {n.label}
-              </NavLink>
-            ))}
-          </nav>
-        )}
+        {mobile && <MobileMegaMenu menus={menus} onNavigate={() => setMobile(false)} />}
       </header>
       <main id="main" className="flex-1">
         <Outlet />

@@ -17,6 +17,14 @@ export const CATEGORIES = [
   { slug: 'security-reverse-engineering', name: 'Security & Reverse Engineering', icon: '🛡️', description: 'Static/binary analysis and debugging for defensive, authorized research.' },
   { slug: 'robotics-edge-ai', name: 'Robotics & Edge AI', icon: '🦾', description: 'Robotics, IoT and edge inference.' },
   { slug: 'research-papers', name: 'Research & Papers', icon: '📄', description: 'Paper implementations, benchmarks and reproducibility.' },
+  // IT & Cloud
+  { slug: 'cloud-infrastructure', name: 'Cloud Infrastructure & IaC', icon: '🏗️', description: 'Infrastructure as code, cloud CLIs and local cloud emulators.' },
+  { slug: 'it-operations', name: 'IT Operations & Monitoring', icon: '📈', description: 'Metrics, dashboards, uptime checks, observability and configuration management.' },
+  { slug: 'it-service-management', name: 'IT Service & Asset Management', icon: '🗃️', description: 'Helpdesk, ticketing, IT asset inventory and service desks.' },
+  { slug: 'networking', name: 'Networking & Proxies', icon: '🔀', description: 'Web servers, reverse proxies, VPN/mesh networking and DNS.' },
+  { slug: 'databases-storage', name: 'Databases & Storage', icon: '🗄️', description: 'Relational, in-memory and analytical databases plus object storage.' },
+  { slug: 'cybersecurity-defense', name: 'Cybersecurity & Compliance', icon: '🔒', description: 'Vulnerability scanning, secret detection, SIEM, runtime security and hardening audits.' },
+  { slug: 'automation-integration', name: 'Automation & Integration', icon: '⚙️', description: 'Workflow automation, job orchestration and app integration platforms.' },
 ];
 
 interface Seed {
@@ -68,5 +76,51 @@ export const RESOURCES: Seed[] = [
   { repo: 'NationalSecurityAgency/ghidra', name: 'Ghidra', type: 'tool', category: 'security-reverse-engineering', summary: 'Software reverse engineering framework for defensive analysis and authorized research.', tags: ['Binary Analysis', 'Reverse Engineering'], language: 'Java' },
   { repo: 'radareorg/radare2', name: 'radare2', type: 'tool', category: 'security-reverse-engineering', summary: 'UNIX-like reverse engineering framework and command-line toolset.', tags: ['Binary Analysis', 'Debugging'], language: 'C' },
   { repo: 'ros2/ros2', name: 'ROS 2', type: 'framework', category: 'robotics-edge-ai', summary: 'Robot Operating System 2 — libraries and tools for building robot applications.', tags: ['Robotics'] },
+  // Cloud Infrastructure & IaC
+  { repo: 'hashicorp/terraform', name: 'Terraform', type: 'tool', category: 'cloud-infrastructure', summary: 'Infrastructure as code tool to provision and manage cloud and on-prem resources declaratively.', tags: ['Infrastructure as Code', 'Cloud'], language: 'Go' },
+  { repo: 'opentofu/opentofu', name: 'OpenTofu', type: 'tool', category: 'cloud-infrastructure', summary: 'Open-source infrastructure as code tool, a community fork of Terraform.', tags: ['Infrastructure as Code', 'Cloud'], language: 'Go' },
+  { repo: 'pulumi/pulumi', name: 'Pulumi', type: 'tool', category: 'cloud-infrastructure', summary: 'Infrastructure as code using general-purpose languages such as TypeScript, Python and Go.', tags: ['Infrastructure as Code', 'Cloud'], language: 'Go' },
+  { repo: 'crossplane/crossplane', name: 'Crossplane', type: 'framework', category: 'cloud-infrastructure', summary: 'Kubernetes-based control plane framework for managing cloud infrastructure.', tags: ['Kubernetes', 'Cloud'], language: 'Go' },
+  { repo: 'localstack/localstack', name: 'LocalStack', type: 'tool', category: 'cloud-infrastructure', summary: 'Local emulator of AWS cloud services for development and testing.', tags: ['AWS', 'Cloud', 'Testing'], language: 'Python' },
+  { repo: 'aws/aws-cli', name: 'AWS CLI', type: 'tool', category: 'cloud-infrastructure', official: true, summary: 'Official command-line interface for Amazon Web Services.', tags: ['AWS', 'CLI', 'Cloud'], language: 'Python' },
+  { repo: 'Azure/azure-cli', name: 'Azure CLI', type: 'tool', category: 'cloud-infrastructure', official: true, summary: 'Official command-line interface for Microsoft Azure.', tags: ['Azure', 'CLI', 'Cloud'], language: 'Python' },
+  // IT Operations & Monitoring
+  { repo: 'prometheus/prometheus', name: 'Prometheus', type: 'tool', category: 'it-operations', summary: 'Monitoring system and time-series database with alerting.', tags: ['Monitoring', 'Observability'], language: 'Go' },
+  { repo: 'grafana/grafana', name: 'Grafana', type: 'tool', category: 'it-operations', summary: 'Dashboards and visualization for metrics, logs and traces.', tags: ['Monitoring', 'Dashboards', 'Observability'] },
+  { repo: 'open-telemetry/opentelemetry-collector', name: 'OpenTelemetry Collector', type: 'tool', category: 'it-operations', summary: 'Vendor-agnostic service to receive, process and export telemetry data.', tags: ['Observability', 'Tracing'], language: 'Go' },
+  { repo: 'netdata/netdata', name: 'Netdata', type: 'tool', category: 'it-operations', summary: 'Real-time infrastructure monitoring for servers, containers and applications.', tags: ['Monitoring'] },
+  { repo: 'louislam/uptime-kuma', name: 'Uptime Kuma', type: 'tool', category: 'it-operations', summary: 'Self-hosted uptime monitoring tool with status pages and notifications.', tags: ['Monitoring', 'Self-hosted'] },
+  { repo: 'ansible/ansible', name: 'Ansible', type: 'tool', category: 'it-operations', summary: 'Agentless IT automation for configuration management, deployment and orchestration.', tags: ['Configuration Management', 'Automation'], language: 'Python' },
+  // IT Service & Asset Management
+  { repo: 'glpi-project/glpi', name: 'GLPI', type: 'tool', category: 'it-service-management', summary: 'IT service management software with asset inventory and helpdesk ticketing.', tags: ['ITSM', 'Helpdesk', 'Asset Management'], language: 'PHP' },
+  { repo: 'snipe/snipe-it', name: 'Snipe-IT', type: 'tool', category: 'it-service-management', summary: 'Self-hosted IT asset and license management system.', tags: ['Asset Management', 'Self-hosted'], language: 'PHP' },
+  { repo: 'zammad/zammad', name: 'Zammad', type: 'tool', category: 'it-service-management', summary: 'Web-based helpdesk and customer support ticketing system.', tags: ['Helpdesk', 'Ticketing'], language: 'Ruby' },
+  { repo: 'osTicket/osTicket', name: 'osTicket', type: 'tool', category: 'it-service-management', summary: 'Support ticket system that routes inquiries from email, web forms and phone.', tags: ['Helpdesk', 'Ticketing'], language: 'PHP' },
+  // Networking & Proxies
+  { repo: 'nginx/nginx', name: 'NGINX', type: 'tool', category: 'networking', official: true, summary: 'Web server, reverse proxy and load balancer.', tags: ['Web Server', 'Reverse Proxy'], language: 'C' },
+  { repo: 'caddyserver/caddy', name: 'Caddy', type: 'tool', category: 'networking', summary: 'Web server with automatic HTTPS.', tags: ['Web Server', 'Reverse Proxy', 'TLS'], language: 'Go' },
+  { repo: 'traefik/traefik', name: 'Traefik', type: 'tool', category: 'networking', summary: 'Cloud-native HTTP reverse proxy and load balancer with automatic service discovery.', tags: ['Reverse Proxy', 'Kubernetes'], language: 'Go' },
+  { repo: 'tailscale/tailscale', name: 'Tailscale', type: 'tool', category: 'networking', summary: 'WireGuard-based mesh VPN client and daemon.', tags: ['VPN', 'WireGuard'], language: 'Go' },
+  { repo: 'pi-hole/pi-hole', name: 'Pi-hole', type: 'tool', category: 'networking', summary: 'Network-wide DNS sinkhole for blocking ads and trackers.', tags: ['DNS', 'Self-hosted'] },
+  // Databases & Storage
+  { repo: 'postgres/postgres', name: 'PostgreSQL', type: 'tool', category: 'databases-storage', official: true, summary: 'Open-source object-relational database system (official mirror).', tags: ['SQL', 'Database'], language: 'C' },
+  { repo: 'redis/redis', name: 'Redis', type: 'tool', category: 'databases-storage', official: true, summary: 'In-memory data store used as a database, cache and message broker.', tags: ['In-memory', 'Cache', 'Database'], language: 'C' },
+  { repo: 'duckdb/duckdb', name: 'DuckDB', type: 'tool', category: 'databases-storage', summary: 'In-process analytical SQL database.', tags: ['SQL', 'Analytics', 'Database'], language: 'C++' },
+  { repo: 'cockroachdb/cockroach', name: 'CockroachDB', type: 'tool', category: 'databases-storage', summary: 'Distributed SQL database built for resilience and horizontal scale.', tags: ['SQL', 'Distributed Systems', 'Database'], language: 'Go' },
+  { repo: 'supabase/supabase', name: 'Supabase', type: 'tool', category: 'databases-storage', summary: 'Postgres development platform with auth, storage, realtime and APIs.', tags: ['Postgres', 'Backend as a Service'] },
+  { repo: 'minio/minio', name: 'MinIO', type: 'tool', category: 'databases-storage', summary: 'S3-compatible object storage server.', tags: ['Object Storage', 'S3'], language: 'Go' },
+  // Cybersecurity & Compliance (defensive)
+  { repo: 'aquasecurity/trivy', name: 'Trivy', type: 'tool', category: 'cybersecurity-defense', summary: 'Scanner for vulnerabilities, misconfigurations, secrets and SBOMs in containers, code and clusters.', tags: ['Vulnerability Scanning', 'Containers'], language: 'Go' },
+  { repo: 'gitleaks/gitleaks', name: 'Gitleaks', type: 'tool', category: 'cybersecurity-defense', summary: 'Detects hardcoded secrets such as passwords and API keys in git repositories.', tags: ['Secret Detection', 'DevSecOps'], language: 'Go' },
+  { repo: 'wazuh/wazuh', name: 'Wazuh', type: 'tool', category: 'cybersecurity-defense', summary: 'Open-source security platform for threat detection, integrity monitoring and compliance.', tags: ['SIEM', 'Compliance'] },
+  { repo: 'falcosecurity/falco', name: 'Falco', type: 'tool', category: 'cybersecurity-defense', summary: 'Cloud-native runtime security tool that detects abnormal behavior in hosts and containers.', tags: ['Runtime Security', 'Kubernetes'], language: 'C++' },
+  { repo: 'zaproxy/zaproxy', name: 'ZAP', type: 'tool', category: 'cybersecurity-defense', summary: 'Web application security scanner for testing your own applications.', tags: ['Application Security', 'DAST'], language: 'Java' },
+  { repo: 'CISOfy/lynis', name: 'Lynis', type: 'tool', category: 'cybersecurity-defense', summary: 'Security auditing and hardening tool for Linux, macOS and Unix systems.', tags: ['Hardening', 'Compliance'] },
+  // Automation & Integration
+  { repo: 'n8n-io/n8n', name: 'n8n', type: 'workflow', category: 'automation-integration', summary: 'Workflow automation platform with a visual editor and many integrations.', tags: ['Workflow Automation', 'Integrations'], language: 'TypeScript' },
+  { repo: 'node-red/node-red', name: 'Node-RED', type: 'tool', category: 'automation-integration', summary: 'Low-code, flow-based programming tool for wiring together devices, APIs and services.', tags: ['Low-code', 'IoT', 'Integrations'], language: 'JavaScript' },
+  { repo: 'activepieces/activepieces', name: 'Activepieces', type: 'workflow', category: 'automation-integration', summary: 'Open-source business automation tool, an alternative to Zapier.', tags: ['Workflow Automation', 'Integrations'], language: 'TypeScript' },
+  { repo: 'apache/airflow', name: 'Apache Airflow', type: 'tool', category: 'automation-integration', summary: 'Platform to author, schedule and monitor workflows as code.', tags: ['Orchestration', 'Data Engineering'], language: 'Python' },
+  { repo: 'temporalio/temporal', name: 'Temporal', type: 'framework', category: 'automation-integration', summary: 'Durable execution platform for running reliable, long-running workflows.', tags: ['Orchestration', 'Distributed Systems'], language: 'Go' },
   { repo: 'karpathy/nanoGPT', name: 'nanoGPT', type: 'paper_implementation', category: 'research-papers', summary: 'Simple, fast repository for training and fine-tuning medium-sized GPTs.', tags: ['Paper Implementations', 'LLM'], language: 'Python' },
 ];

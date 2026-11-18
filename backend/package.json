@@ -6,6 +6,7 @@
     "dev": "tsx watch src/server.ts",
     "start": "tsx src/server.ts",
     "seed": "tsx src/database/seed.ts",
+    "seed:add": "tsx src/database/seed.ts --add",
     "test": "vitest run",
     "typecheck": "tsc --noEmit"
   },
